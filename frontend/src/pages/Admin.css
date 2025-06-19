@@ -1,0 +1,86 @@
+.admin-dashboard {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.admin-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.admin-links {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-link {
+  display: block;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #4a90e2;
+  transition: 0.3s;
+}
+
+.admin-link:hover {
+  background-color: #4a90e2;
+  color: white;
+}
+/* src/pages/Admin.css */
+.admin-container {
+  padding: 20px;
+}
+.admin-card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+.admin-card input {
+  margin-right: 10px;
+  padding: 4px;
+}
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 1.2rem;
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .admin-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .admin-link {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard {
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .admin-title {
+    font-size: 1.3rem;
+  }
+
+  .admin-link {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}

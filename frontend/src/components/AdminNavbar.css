@@ -1,0 +1,90 @@
+/* src/components/AdminNavbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+.logout-btn {
+  padding: 8px 12px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background-color: #e60000;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    position: absolute;
+    top: 65px;
+    right: 20px;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: max-content;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a,
+  .logout-btn {
+    width: 100%;
+    text-align: left;
+  }
+}

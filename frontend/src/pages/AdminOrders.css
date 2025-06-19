@@ -1,0 +1,128 @@
+.admin-orders {
+  padding: 1rem;
+}
+
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Filter dropdown */
+.filter-select,
+.search-input {
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-weight: 500;
+}
+
+/* Order cards */
+.order-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.order-card:hover {
+  transform: scale(1.01);
+}
+
+.order-card p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.order-card ul {
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+/* Deliver button */
+.deliver-btn {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.deliver-btn:hover {
+  background-color: #218838;
+}
+
+.deliver-btn:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .admin-orders {
+    padding: 0.8rem;
+  }
+
+  .orders-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .filter-select,
+  .search-input {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .order-card {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .deliver-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-select,
+  .search-input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .deliver-btn {
+    font-size: 0.95rem;
+  }
+
+  .order-card p {
+    font-size: 0.9rem;
+  }
+}

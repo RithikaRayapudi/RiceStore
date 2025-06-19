@@ -1,0 +1,90 @@
+.admin-products {
+  padding: 1rem;
+  max-width: 600px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.admin-heading {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.product-name {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.product-input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 140px;
+}
+
+.product-input-group label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.product-input-group input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: border 0.2s;
+}
+
+.product-input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Responsive: Stack inputs on smaller screens */
+@media (max-width: 768px) {
+  .input-row {
+    flex-direction: column;
+  }
+
+  .product-input-group {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    font-size: 0.95rem;
+  }
+
+  .product-input-group input {
+    font-size: 0.95rem;
+  }
+
+  .admin-heading {
+    font-size: 1.2rem;
+  }
+}
