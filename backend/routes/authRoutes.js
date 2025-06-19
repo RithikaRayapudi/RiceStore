@@ -6,6 +6,8 @@ const User = require('../models/User');
 
 // REGISTER route
 router.post('/register', async (req, res) => {
+  console.log("HIT /api/auth/register");
+  console.log(req.body);
   const { name, email, phone, password } = req.body;
   const role = 'customer';  // Only customers register via this route
 
@@ -95,7 +97,5 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-console.log("HIT /api/auth/login");
-console.log(req.body);
 
 module.exports = router;

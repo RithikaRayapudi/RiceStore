@@ -8,7 +8,8 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const { customerName, phone, address, products = [], paymentMethod, customerEmail, preferredDate } = req.body;
-
+console.log("HIT /api/orders");
+console.log(req.body);
     const total = products.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     const order = await Order.create({
@@ -23,8 +24,7 @@ router.post('/', async (req, res) => {
     });
 
     console.log('✅ Order saved:', order._id);
-console.log("HIT /api/orders");
-console.log(req.body);
+
 
     // Respond immediately
     res.status(201).json({ message: 'Order placed', order });
