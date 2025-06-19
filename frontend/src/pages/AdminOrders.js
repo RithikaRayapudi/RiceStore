@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AdminOrders.css';
+import API_BASE_URL from '../api';
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -13,7 +14,7 @@ function AdminOrders() {
   }, []);
 
   const fetchOrders = () => {
-    axios.get('https://ricestore-ewyq.onrender.com/api/orders')
+    axios.get(`${API_BASE_URL}/orders`)
       .then(res => setOrders(res.data))
       .catch(err => console.error('Error fetching orders:', err));
   };
@@ -21,7 +22,7 @@ function AdminOrders() {
   const markAsDelivered = async (id) => {
     setLoadingId(id);
     try {
-      await axios.put(`https://ricestore-ewyq.onrender.com/api/orders/${id}/delivered`);
+      await axios.put(`${API_BASE_URL}/orders/${id}/delivered`);
       fetchOrders();
     } catch (err) {
       console.error('❌ Error updating order:', err);

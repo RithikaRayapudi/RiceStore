@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../api';
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -14,7 +15,7 @@ function Orders() {
       return;
     }
 
-    axios.get(`https://ricestore-ewyq.onrender.com/api/orders/phone/${phone}`)
+    axios.get(`${API_BASE_URL}/orders/phone/${phone}`)
       .then(res => {
         setOrders(res.data);
         setLoading(false);

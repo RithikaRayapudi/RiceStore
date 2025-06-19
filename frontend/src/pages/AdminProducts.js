@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AdminProducts.css';
+import API_BASE_URL from '../api';
 
 function AdminProducts() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://ricestore-ewyq.onrender.com/api/products')
+    axios.get(`${API_BASE_URL}/products`)
       .then(res => setProducts(res.data))
       .catch(err => console.error('Error fetching products:', err));
   }, []);
 
   const handleUpdate = async (id, price, weight) => {
     try {
-      await axios.put(`https://ricestore-ewyq.onrender.com/api/products/${id}`, { price, weight });
+      await axios.put(`${API_BASE_URL}/products/${id}`, { price, weight });
       alert('✅ Updated successfully');
     } catch (error) {
       console.error('Error updating product:', error);

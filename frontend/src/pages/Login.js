@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Login.css';
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../api';
 
 function Login() {
   const [phone, setPhone] = useState('');
@@ -30,7 +31,7 @@ function Login() {
     }
 
     try {
-      const res = await axios.post('https://ricestore-ewyq.onrender.com/api/auth/login', { phone, password });
+      const res = await axios.post(`${API_BASE_URL}/auth/login`, { phone, password });
       const { token, user } = res.data;
 
       login(token, user);
