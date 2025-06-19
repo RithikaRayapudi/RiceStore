@@ -1,5 +1,3 @@
-// pages/Orders.js
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -16,7 +14,7 @@ function Orders() {
       return;
     }
 
-    axios.get(`http://localhost:5000/api/orders/phone/${phone}`)
+    axios.get(`https://ricestore-ewyq.onrender.com/api/orders/phone/${phone}`)
       .then(res => {
         setOrders(res.data);
         setLoading(false);
@@ -45,7 +43,11 @@ function Orders() {
               {order.products.map((p, idx) => (
                 <div key={idx} className="flex items-center gap-2 border p-2 rounded">
                   {p.img && (
-                    <img src={`/images/${p.img}`} alt={p.name} className="w-12 h-12 object-cover" />
+                    <img
+                      src={`/images/${p.img}`}
+                      alt={p.name}
+                      className="w-12 h-12 object-cover"
+                    />
                   )}
                   <div>
                     <p>{p.name}</p>

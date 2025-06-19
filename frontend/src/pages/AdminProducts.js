@@ -6,14 +6,14 @@ function AdminProducts() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get('https://ricestore-ewyq.onrender.com/api/products')
       .then(res => setProducts(res.data))
       .catch(err => console.error('Error fetching products:', err));
   }, []);
 
   const handleUpdate = async (id, price, weight) => {
     try {
-      await axios.put(`http://localhost:5000/api/products/${id}`, { price, weight });
+      await axios.put(`https://ricestore-ewyq.onrender.com/api/products/${id}`, { price, weight });
       alert('✅ Updated successfully');
     } catch (error) {
       console.error('Error updating product:', error);

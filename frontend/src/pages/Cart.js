@@ -17,7 +17,6 @@ function Cart() {
     preferredDate: '',
   });
 
-  // 🔁 COD is the default selected option
   const [paymentMethod, setPaymentMethod] = useState('COD');
   const [errors, setErrors] = useState({});
 
@@ -59,7 +58,7 @@ function Cart() {
     setIsSubmitting(true);
 
     try {
-      await axios.post('http://localhost:5000/api/orders', {
+      await axios.post('https://ricestore-ewyq.onrender.com/api/orders', {
         customerName: customer.name,
         phone: customer.phone,
         address: customer.address,
@@ -186,18 +185,17 @@ function Cart() {
             </label>
 
             <label htmlFor="payment-method" style={{ marginTop: '1rem', fontWeight: 'bold' }}>
-  Payment Method
-</label>
-<select
-  id="payment-method"
-  className="payment-select"
-  value={paymentMethod}
-  onChange={(e) => setPaymentMethod(e.target.value)}
->
-  <option value="COD">Cash on Delivery</option>
-  <option value="UPI">UPI</option>
-</select>
-
+              Payment Method
+            </label>
+            <select
+              id="payment-method"
+              className="payment-select"
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            >
+              <option value="COD">Cash on Delivery</option>
+              <option value="UPI">UPI</option>
+            </select>
 
             {paymentMethod === 'UPI' && (
               <div className="upi-section">

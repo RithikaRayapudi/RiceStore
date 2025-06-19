@@ -1,4 +1,3 @@
-// src/pages/AdminOrders.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AdminOrders.css';
@@ -14,21 +13,21 @@ function AdminOrders() {
   }, []);
 
   const fetchOrders = () => {
-    axios.get('http://localhost:5000/api/orders')
+    axios.get('https://ricestore-ewyq.onrender.com/api/orders')
       .then(res => setOrders(res.data))
       .catch(err => console.error('Error fetching orders:', err));
   };
 
   const markAsDelivered = async (id) => {
-    setLoadingId(id); // show loading for this order
+    setLoadingId(id);
     try {
-      await axios.put(`http://localhost:5000/api/orders/${id}/delivered`);
+      await axios.put(`https://ricestore-ewyq.onrender.com/api/orders/${id}/delivered`);
       fetchOrders();
     } catch (err) {
       console.error('❌ Error updating order:', err);
       alert('Failed to update status');
     } finally {
-      setLoadingId(null); // reset loading
+      setLoadingId(null);
     }
   };
 
@@ -42,7 +41,6 @@ function AdminOrders() {
     <div className="admin-orders">
       <div className="orders-header">
         <h2 className="text-xl font-bold">📦 Orders</h2>
-
         <div className="filters">
           <input
             type="text"

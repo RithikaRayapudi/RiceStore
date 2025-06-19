@@ -1,4 +1,3 @@
-// src/pages/Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -20,7 +19,7 @@ function Register() {
     const newErrors = {};
     if (!form.name.trim()) newErrors.name = 'Name is required';
     if (!/^[0-9]{10}$/.test(form.phone)) newErrors.phone = 'Phone must be 10 digits';
-    // if (!/^[^\\s@]+@gmail\\.com$/.test(form.email)) newErrors.email = 'Email must be a valid Gmail address';
+    if (!form.email.endsWith('@gmail.com')) newErrors.email = 'Email must be a valid Gmail address';
     if (form.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
     return newErrors;
   };
@@ -34,7 +33,7 @@ function Register() {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/auth/register', {
+      await axios.post('https://ricestore-ewyq.onrender.com/api/auth/register', {
         ...form,
         role: 'customer'
       });

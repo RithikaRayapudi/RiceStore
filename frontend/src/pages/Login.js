@@ -1,4 +1,3 @@
-// src/pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css';
@@ -31,7 +30,7 @@ function Login() {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { phone, password });
+      const res = await axios.post('https://ricestore-ewyq.onrender.com/api/auth/login', { phone, password });
       const { token, user } = res.data;
 
       login(token, user);
@@ -70,7 +69,7 @@ function Login() {
           <button type="submit">Login</button>
         </form>
         <p className="reg-link">
-                  New User? <Link to="/register">Register Here</Link>
+          New User? <Link to="/register">Register Here</Link>
         </p>
       </div>
     </div>
