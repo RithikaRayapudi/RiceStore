@@ -23,6 +23,8 @@ router.post('/', async (req, res) => {
     });
 
     console.log('✅ Order saved:', order._id);
+console.log("HIT /api/orders");
+console.log(req.body);
 
     // Respond immediately
     res.status(201).json({ message: 'Order placed', order });

@@ -95,5 +95,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+console.log("HIT /api/auth/login");
+console.log(req.body);
 
 module.exports = router;
