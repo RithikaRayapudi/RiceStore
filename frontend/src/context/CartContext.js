@@ -1,27 +1,30 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // 🔑 Unique key per user
-  const getUserKey = () => {
+  const getUserKey = useCallback(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     return user?.email || 'guest';
-  };
+  }, []);
 
-  const getStorageKey = () => `cart-${getUserKey()}`;
-  const getExpiryKey = () => `cart-expiry-${getUserKey()}`;
+  const getStorageKey = useCallback(() => `cart-${getUserKey()}`, [getUserKey]);
+  const getExpiryKey = useCallback(() => `cart-expiry-${getUserKey()}`, [getUserKey]);
 
-  // 🧠 Load cart from localStorage on first render
   useEffect(() => {
     const key = getStorageKey();
     const expiryKey = getExpiryKey();
     const expiry = localStorage.getItem(expiryKey);
 
     if (expiry && new Date().getTime() > parseInt(expiry)) {
-      // Cart expired
       localStorage.removeItem(key);
       localStorage.removeItem(expiryKey);
       setCart([]);
@@ -29,9 +32,8 @@ export const CartProvider = ({ children }) => {
       const storedCart = JSON.parse(localStorage.getItem(key)) || [];
       setCart(storedCart);
     }
-  }, []);
+  }, [getStorageKey, getExpiryKey]);
 
-  // 💾 Save cart to localStorage when it changes
   useEffect(() => {
     const key = getStorageKey();
     const expiryKey = getExpiryKey();
@@ -41,7 +43,7 @@ export const CartProvider = ({ children }) => {
       const expiryTime = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours
       localStorage.setItem(expiryKey, expiryTime.toString());
     }
-  }, [cart]);
+  }, [cart, getStorageKey, getExpiryKey]);
 
   const addToCart = (product) => {
     setCart((prev) => {
