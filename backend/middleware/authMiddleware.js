@@ -1,21 +1,12 @@
-const jwt = require('jsonwebtoken');
+const express = require('express');
+const verifyToken = require('./middleware/verifyToken');
+const app = express();
 
-const verifyToken = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+// Public Routes
+app.get('/manifest.json', (req, res) => {
+  res.sendFile(__dirname + '/public/manifest.json');
+});
+app.post('/api/auth/login', loginHandler);
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
-
-  const token = authHeader.split(" ")[1];
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    return res.status(401).json({ message: "Invalid token" });
-  }
-};
-
-module.exports = verifyToken;
+// Protected Routes
+app.get('/api/user/profile', verifyToken, profileHandler);
