@@ -1,4 +1,3 @@
-/* src/components/AdminNavbar.css */
 
 .navbar {
   display: flex;
@@ -57,7 +56,6 @@
   background-color: #e60000;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .hamburger {
     display: block;

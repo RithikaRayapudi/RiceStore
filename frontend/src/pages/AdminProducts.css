@@ -64,7 +64,6 @@
   outline: none;
 }
 
-/* Responsive: Stack inputs on smaller screens */
 @media (max-width: 768px) {
   .input-row {
     flex-direction: column;

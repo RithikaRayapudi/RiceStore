@@ -1,6 +1,6 @@
 // seed.js
 const mongoose = require('mongoose');
-const Product = require('./models/Product'); // adjust path if needed
+const Product = require('./models/Product'); 
 
 const MONGODB_URI = 'mongodb+srv://riceadmin:riceadmin@ricestore.asqqvko.mongodb.net/Rice_Store?retryWrites=true&w=majority&appName=RiceStore'; // 🔁 Replace with your real URI
 
@@ -34,7 +34,7 @@ async function seedDB() {
     await mongoose.connect(MONGODB_URI);
     console.log('✅ Connected to MongoDB');
 
-    await Product.deleteMany(); // 🧹 Optional: Clear existing products
+    await Product.deleteMany(); 
     await Product.insertMany(products);
     console.log('🌾 Seeded products successfully');
   } catch (error) {

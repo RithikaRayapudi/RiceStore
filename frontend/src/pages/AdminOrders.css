@@ -17,7 +17,6 @@
   align-items: center;
 }
 
-/* Filter dropdown */
 .filter-select,
 .search-input {
   padding: 6px 10px;
@@ -28,7 +27,6 @@
   font-weight: 500;
 }
 
-/* Order cards */
 .order-card {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -53,7 +51,6 @@
   padding-left: 1rem;
 }
 
-/* Deliver button */
 .deliver-btn {
   margin-top: 10px;
   background-color: #28a745;

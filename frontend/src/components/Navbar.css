@@ -18,13 +18,12 @@
 
 .logo a {
   color: #333;
-  text-decoration: none; /* This removes the underline */
+  text-decoration: none; 
 }
 
 
 
 
-/* Hamburger button for small screens */
 .hamburger {
   display: none;
   font-size: 28px;
@@ -64,7 +63,6 @@
   background-color: #e60000;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .hamburger {
     display: block;

@@ -34,7 +34,7 @@
 .store-samples .card p {
   line-height: 1.6;
   margin: 1rem 0;
-  text-align: justify; /* ✅ Justified text */
+  text-align: justify; 
 }
 
 .features ul {
@@ -63,7 +63,6 @@
   font-size: 1.2rem;
 }
 
-/* ✅ Responsive Enhancements */
 @media (max-width: 600px) {
   .about-container {
     padding: 0 16px;
@@ -96,7 +95,7 @@
 
   .store-samples .card p {
     font-size: 0.95rem;
-    text-align: justify; /* ✅ Justified on mobile too */
+    text-align: justify;
   }
 }
 .about-container p,
@@ -105,9 +104,9 @@
   line-height: 1.6;
   margin: 1rem 0;
   text-align: justify;
-  hyphens: auto;              /* 👈 Helps break long words */
-  word-spacing: normal;       /* Avoids wide gaps */
-  word-break: break-word;     /* Breaks long words if needed */
+  hyphens: auto;              
+  word-spacing: normal;       
+  word-break: break-word;     
 }
 .store-samples .product-sample {
   display: flex;
@@ -127,7 +126,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 120px; /* ensures enough vertical space */
+  min-height: 120px; 
 }
 
 .store-samples .card h3 {
@@ -143,13 +142,11 @@
   color: #444;
   font-size: 0.95rem;
 }
-/* About container */
 .about-container {
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Section headings */
 .about-container h1 {
   text-align: center;
   margin-bottom: 0.5rem;
@@ -163,7 +160,6 @@
   color: #666;
 }
 
-/* ───── Our Story Two-Column Layout ───── */
 .story-content {
   display: flex;
   gap: 2rem;
@@ -193,7 +189,6 @@
   border-radius: 12px;
 }
 
-/* ───── Features & Samples ───── */
 .features ul {
   list-style: disc;
   margin-left: 2rem;
@@ -247,7 +242,6 @@
   padding-bottom: 4px;
 }
 
-/* ───── Our Story Layout ───── */
 .story-content {
   display: flex;
   flex-wrap: wrap;
@@ -280,7 +274,6 @@
   border-radius: 12px;
 }
 
-/* ───── Features & Samples ───── */
 .features ul {
   list-style: disc;
   margin-left: 2rem;
@@ -314,7 +307,6 @@
   color: #444;
 }
 
-/* ───── Responsive ───── */
 @media (max-width: 768px) {
   .story-content {
     flex-direction: column;
