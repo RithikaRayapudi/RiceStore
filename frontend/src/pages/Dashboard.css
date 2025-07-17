@@ -3,6 +3,7 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* ───── Hero Banner Scroll Wrapper ───── */
 .hero-banner-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -22,16 +23,18 @@
   background-color: #f1f1f1;
 }
 
+/* ───── Banner Row ───── */
 .hero-banner-row {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-    overflow: hidden;
+    overflow: hidden; /* ✅ Prevent scrollbars on hover */
 
 }
 
+/* ───── Side & Main Banner Images ───── */
 .side-banner-img,
 .hero-main-banner {
   width: 25%;
@@ -60,6 +63,7 @@
   display: block;
 }
 
+/* ───── Category Buttons ───── */
 .category-menu {
   display: flex;
   overflow-x: auto;
@@ -87,6 +91,7 @@
   border-color: #ff9900;
 }
 
+/* ───── Search Filter ───── */
 .filters {
   display: flex;
   justify-content: center;
@@ -102,6 +107,7 @@
   border: 1px solid #ccc;
 }
 
+/* ───── Product Cards ───── */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -129,6 +135,7 @@
   margin-bottom: 0.5rem;
 }
 
+/* ───── Quantity Controls ───── */
 .quantity-controls {
   display: flex;
   justify-content: center;
@@ -152,6 +159,7 @@
   font-weight: bold;
 }
 
+/* ───── Responsive Enhancements ───── */
 @media (max-width: 1024px) {
   .category-menu {
     justify-content: flex-start;

@@ -29,6 +29,7 @@ function Dashboard() {
 
   return (
     <div className="homepage-container">
+      {/* ✅ Scrollable Banner Row on Small Screens */}
       <div className="hero-banner-scroll">
         <div className="hero-banner-row">
           <img src={require('../images/banner2.jpg')} alt="Banner Left" className="side-banner-img" />
@@ -39,6 +40,7 @@ function Dashboard() {
         </div>
       </div>
 
+      {/* Category Filter */}
       <div className="category-menu">
         {categories.map(cat => (
           <button
@@ -51,6 +53,7 @@ function Dashboard() {
         ))}
       </div>
 
+      {/* Search Bar */}
       <div className="filters">
         <input
           className="search-input"
@@ -60,6 +63,7 @@ function Dashboard() {
         />
       </div>
 
+      {/* Product Grid */}
       <div className="product-grid">
         {filtered.map(p => {
           const qty = getQuantity(p._id);

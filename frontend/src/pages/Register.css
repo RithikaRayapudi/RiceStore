@@ -87,6 +87,7 @@
   display: block;
 }
 
+/* ✅ Responsive design for small screens */
 @media (max-width: 480px) {
   .register-box {
     padding: 20px;
