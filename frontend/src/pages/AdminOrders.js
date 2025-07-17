@@ -1,102 +1,88 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './AdminOrders.css';
-import API_BASE_URL from '../api';
 
-function AdminOrders() {
+const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
-  const [filter, setFilter] = useState('All');
   const [searchPhone, setSearchPhone] = useState('');
-  const [loadingId, setLoadingId] = useState(null);
+  const [filter, setFilter] = useState('All');
+
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || '';
 
   useEffect(() => {
     fetchOrders();
   }, []);
 
   const fetchOrders = () => {
-    axios.get(`${API_BASE_URL}/orders`)
-      .then(res => setOrders(res.data))
-      .catch(err => console.error('Error fetching orders:', err));
+    axios
+      .get(`${API_BASE_URL}/orders`)
+      .then((res) => {
+        if (Array.isArray(res.data)) {
+          setOrders(res.data);
+        } else {
+          console.error('Expected an array but got:', res.data);
+          setOrders([]); // fallback to empty list
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching orders:', err);
+        setOrders([]); // ensure orders is always an array
+      });
   };
 
-  const markAsDelivered = async (id) => {
-    setLoadingId(id);
-    try {
-      await axios.put(`${API_BASE_URL}/orders/${id}/delivered`);
-      fetchOrders();
-    } catch (err) {
-      console.error('❌ Error updating order:', err);
-      alert('Failed to update status');
-    } finally {
-      setLoadingId(null);
-    }
-  };
-
-  const filteredOrders = orders.filter(order => {
-    const phoneMatch = searchPhone.trim() === '' || order.phone.includes(searchPhone.trim());
-    const statusMatch = filter === 'All' || order.status === filter;
-    return phoneMatch && statusMatch;
-  });
+  const filteredOrders = Array.isArray(orders)
+    ? orders.filter((order) => {
+        const phoneMatch =
+          searchPhone.trim() === '' ||
+          order.phone?.includes(searchPhone.trim());
+        const statusMatch = filter === 'All' || order.status === filter;
+        return phoneMatch && statusMatch;
+      })
+    : [];
 
   return (
-    <div className="admin-orders">
-      <div className="orders-header">
-        <h2 className="text-xl font-bold">📦 Orders</h2>
-        <div className="filters">
-          <input
-            type="text"
-            placeholder="Search phone..."
-            value={searchPhone}
-            onChange={(e) => setSearchPhone(e.target.value)}
-            className="search-input"
-          />
-          <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="filter-select"
-          >
-            <option value="All">All</option>
-            <option value="Pending">Pending</option>
-            <option value="Delivered">Delivered</option>
-          </select>
-        </div>
+    <div>
+      <h2>Admin Orders</h2>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Search by phone"
+          value={searchPhone}
+          onChange={(e) => setSearchPhone(e.target.value)}
+        />
+
+        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+          <option value="All">All</option>
+          <option value="Pending">Pending</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
       </div>
 
-      {filteredOrders.length === 0 ? (
-        <p>No matching orders.</p>
-      ) : (
-        <div className="grid grid-cols-1 gap-4">
-          {filteredOrders.map(order => (
-            <div key={order._id} className="order-card">
-              <p><strong>Customer:</strong> {order.customerName}</p>
-              <p><strong>Phone:</strong> {order.phone}</p>
-              <p><strong>Payment:</strong> {order.paymentMethod}</p>
-              <p><strong>Total:</strong> ₹{order.total}</p>
-              <p><strong>Status:</strong> {order.status}</p>
-              <p><strong>Address:</strong> {order.address}</p>
-              <p><strong>Date:</strong> {order.preferredDate || 'Not set'}</p>
-              <p><strong>Items:</strong></p>
-              <ul className="list-disc list-inside">
-                {order.products.map((p, i) => (
-                  <li key={i}>{p.name} - {p.quantity} pcs</li>
-                ))}
-              </ul>
-
-              {order.status !== 'Delivered' && (
-                <button
-                  className="deliver-btn"
-                  onClick={() => markAsDelivered(order._id)}
-                  disabled={loadingId === order._id}
-                >
-                  {loadingId === order._id ? 'Updating...' : '✅ Mark as Delivered'}
-                </button>
-              )}
-            </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Phone</th>
+            <th>Status</th>
+            {/* Add more columns if needed */}
+          </tr>
+        </thead>
+        <tbody>
+          {filteredOrders.map((order) => (
+            <tr key={order._id}>
+              <td>{order._id}</td>
+              <td>{order.phone}</td>
+              <td>{order.status}</td>
+              {/* Render more details if needed */}
+            </tr>
           ))}
-        </div>
-      )}
+        </tbody>
+      </table>
+
+      {filteredOrders.length === 0 && <p>No orders found.</p>}
     </div>
   );
-}
+};
 
 export default AdminOrders;
